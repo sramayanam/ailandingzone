@@ -136,11 +136,11 @@ variable "contributor_principal_ids" {
 }
 
 variable "user_principal_ids" {
-  default = ["dfc3d2cb-c843-412f-acb4-e8706989aab2"]
+  default = ["{user-principal-id}"]
 }
 
 variable "tenantid" {
-  default = "8429325e-77e2-4bd9-9f1e-4be922d474df"
+  default = "{tenant-id}"
 }
 
 
