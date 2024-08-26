@@ -2,7 +2,9 @@
 
 # Terraform AI landing zone creation
 
-This Terraform file contains the configuration for deploying various Azure AI landing zone resources. Use this to integrate with existing landing zone resources. It initializes data sources, local variables, and modules to create storage accounts, key vaults, log analytics workspaces, application insights instances, container registries, search services, ai studio, ai project, private endpoints for all PaaS services, Azure openai service,Applied AI Services, role-based access control, and diagnostic settings.
+This Terraform file contains the configuration for deploying various Azure AI landing zone resources. Use this to integrate with existing landing zone resources. It initializes data sources, local variables, and modules to create storage accounts, key vaults, log analytics workspaces, application insights instances, container registries, search services, ai studio, ai project, private endpoints for all PaaS services, Azure openai service,Applied AI Services, role-based access control, and diagnostic settings. 
+
+![AILZ-Generic drawio](https://github.com/user-attachments/assets/b803fe4c-0c5e-4705-84ce-7a7af3ec8978)
 
 The code start with instantiating various modules from main.tf. Description is as follows
 
