@@ -1,5 +1,4 @@
 # ailzfinal
-![image](https://github.com/user-attachments/assets/f59866e5-9f05-4799-9a7f-dafaaa8f2fef)
 
 # Terraform AI landing zone creation
 
@@ -100,3 +99,31 @@ This module is used to create private endpoints in Azure. Private endpoints allo
     - `cognitive_account_id`: The ID of the cognitive account.
     - `private_endpoint_ids`: The IDs of the private endpoints.
 
+## Environment Validation:
+
+#### 1. Ensure the below role assignments are in place
+
+| Role                              | Managed Identity                  | Resource |
+|----------                         |----------                         |----------|
+| Storage File Data Privileged Contributor   | Azure AI Studio project   | Storage Account |
+| Storage Blob Data Contributor   | Azure AI Service   | Data 6  |  Storage Account |
+| Storage Blob Data Contributor    |    Azure AI Search         |  Storage Account   |
+
+#### 2. Ensure all the private DNS zones are created and configured
+
+#### 3. Validate chat playgrounds and assistant playgrounds are functional
+
+#### 4. Ensure you create an OpenAI connection to the AI landing zone specific OpenAI service. It comes pre-deployed with inputs provided in tfvars. 
+
+#### 5. Create compute instances as needed using information in following link:
+https://learn.microsoft.com/en-us/azure/machine-learning/how-to-create-compute-instance?view=azureml-api-2&tabs=azure-cli
+
+#### 6. Check every AI engineers have Azure AI developer role in AI project 
+
+#### 7. Ensure you have individual permissions based on your role on backend storage, file system, search service contributor and cognitive services contributor on the OpenAI service
+
+#### 8. Test serverless compute
+        1.  Create a prompt flow
+        2.  Start the serverless compute and ensure the green check mark is being displayed on the portal
+        
+#### 9. If you are a super user and requires dedicated compute, you can create your own compute and configure VS code container on that compute

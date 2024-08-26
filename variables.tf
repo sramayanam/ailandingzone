@@ -99,10 +99,24 @@ variable "openai_private_endpoint_name" {
   default = "aaaorg-aoai-oai"
 }
 
-variable "openai_deployments" {
-  default = {
 
-    embeddings = {
+variable "openai_deployments" {
+  type = list(object({
+    name = string
+    model = object({
+      format          = string
+      name            = string
+      version         = string
+      rai_policy_name = string
+    })
+    sku = object({
+      name     = string
+      capacity = number
+    })
+  }))
+
+  default = [
+    {
       name = "text-embedding-ada-002"
       model = {
         format          = "OpenAI"
@@ -115,7 +129,7 @@ variable "openai_deployments" {
         capacity = 5
       }
     },
-    gpt4turbo = {
+    {
       name = "gpt-4"
       model = {
         format          = "OpenAI"
@@ -128,9 +142,8 @@ variable "openai_deployments" {
         capacity = 10
       }
     }
-  }
+  ]
 }
-
 variable "contributor_principal_ids" {
   default = []
 }

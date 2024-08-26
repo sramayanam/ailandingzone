@@ -100,8 +100,8 @@ resource "azurerm_private_endpoint" "endpoint" {
 
 resource "azurerm_cognitive_deployment" "deployment" {
   provider             = azurerm.analytics
-  for_each             = var.deployments
-  name                 = each.value.model.name
+  for_each             = { for idx, deployment in var.deployments : idx => deployment }
+  name                 = each.value.name
   cognitive_account_id = azurerm_cognitive_account.this.id
   rai_policy_name      = each.value.model.rai_policy_name
   model {
@@ -109,7 +109,6 @@ resource "azurerm_cognitive_deployment" "deployment" {
     name    = each.value.model.name
     version = each.value.model.version
   }
-
   scale {
     type     = each.value.sku.name
     capacity = each.value.sku.capacity
@@ -127,13 +126,17 @@ resource "azurerm_role_assignment" "oai" {
   principal_id         = azurerm_cognitive_account.this.identity[0].principal_id
 }
 
-
-resource "azurerm_cognitive_account" "cognitive_service" {
+#### Modifying cognitive services to latest ai services ###############
+resource "azurerm_ai_services" "cognitive_service" {
   name                = "appliedaisvcs-${var.cognitive_name}"
   location            = var.location
   resource_group_name = var.resource_group_name
   sku_name            = "S0"
-  kind                = "CognitiveServices"
+
+
+  tags = {
+    Acceptance = "Test"
+  }
   identity {
     type = "SystemAssigned"
   }
@@ -141,7 +144,7 @@ resource "azurerm_cognitive_account" "cognitive_service" {
 
 resource "azurerm_role_assignment" "appai" {
   role_definition_name = "Storage Blob Data Contributor"
-  scope                = azurerm_cognitive_account.cognitive_service.id
-  principal_id         = azurerm_cognitive_account.cognitive_service.identity[0].principal_id
+  scope                = azurerm_ai_services.cognitive_service.id
+  principal_id         = azurerm_ai_services.cognitive_service.identity[0].principal_id
 }
 
