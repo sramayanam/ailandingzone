@@ -70,7 +70,17 @@ This module is used to create private endpoints in Azure. Private endpoints allo
 - `virtual_network_name` (required): The name of the virtual network where the private endpoint will be created.
 - `virtual_network_resource_group_name` (required): The resource group name of the virtual network.
 - `private_endpoints_subnet_name` (required): The name of the subnet where the private endpoint will be placed.
-- `private_dns_zone_resource_group_name` (required): The resource group name of the private DNS zone.
+- `private_dns_zone_resource_group_name` (required): The resource group name of the private DNS zone. Ensure Following DNS Zones are in place
+    - privatelink.api.azureml.ms
+    - privatelink.azurecr.io
+    - privatelink.blob.core.windows.net
+    - privatelink.cognitiveservices.azure.com
+    - privatelink.file.core.windows.net
+    - privatelink.notebooks.azure.net
+    - privatelink.openai.azure.com
+    - privatelink.search.windows.net
+    - privatelink.servicebus.windows.net
+    - privatelink.vaultcore.azure.net
 - `private_endpoints` (required): A list of private endpoint configurations. Each configuration should include the following properties:
     - `privateEndpointName`: The name of the private endpoint.
     - `resourceGroupName`: The resource group name of the private endpoint.
