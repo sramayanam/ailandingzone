@@ -115,11 +115,15 @@ This module is used to create private endpoints in Azure. Private endpoints allo
 
 #### 1. Ensure the below role assignments are in place
 
-| Role                              | Managed Identity                  | Resource |
+
+| Role                              | Managed Identity/User                | Resource |
 |----------                         |----------                         |----------|
 | Storage File Data Privileged Contributor   | Azure AI Studio project   | Storage Account |
 | Storage Blob Data Contributor   | Azure AI Service   |  Storage Account |
 | Storage Blob Data Contributor    |    Azure AI Search         |  Storage Account   |
+| Storage Blob Data Contributor    |    Azure Container Registry         |  Storage Account   |
+| Cognitive Services User    |   User Identity       | Azure Open AI/ Azure AI Services(applied ai)   |
+| AI Developer    |   User Identity       | Studio/Project   |
 
 #### 2. Ensure all the private DNS zones are created and configured
 
