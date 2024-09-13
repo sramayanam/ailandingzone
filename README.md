@@ -124,6 +124,9 @@ This module is used to create private endpoints in Azure. Private endpoints allo
 | Storage Blob Data Contributor    |    Azure Container Registry         |  Storage Account   |
 | Cognitive Services User    |   User Identity       | Azure Open AI/ Azure AI Services(applied ai)   |
 | AI Developer    |   User Identity       | Studio/Project   |
+| Storage File Data SMB Share Contributor  |  AI Project       | Storage Account   |
+| Storage Table Data Contributor   |  AI Project       | Storage Account   |
+ 
 
 #### 2. Ensure all the private DNS zones are created and configured
 
